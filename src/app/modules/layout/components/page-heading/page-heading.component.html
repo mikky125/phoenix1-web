@@ -1,0 +1,14 @@
+<div class="page-heading">
+    <div class="page-heading__content">
+        <a *ngIf="!!backButton" class="page-heading__back" [routerLink]="backButton" mat-icon-button aria-label="Back"
+            ><mat-icon>keyboard_backspace</mat-icon></a
+        >
+        <div class="page-heading__meta">
+            <h2>{{ heading }}</h2>
+            <p *ngIf="!!desc">{{ desc }}</p>
+        </div>
+    </div>
+    <div class="page-heading__actions">
+        <ng-content></ng-content>
+    </div>
+</div>

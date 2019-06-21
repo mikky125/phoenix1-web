@@ -1,0 +1,9 @@
+<div class="confirm-dialog">
+    <h1 mat-dialog-title class="confirm-dialog__title">{{ data.title }}</h1>
+    <p class="confirm-dialog__desc">{{ data.desc }}</p>
+    <app-loading [loading]="loading"></app-loading>
+    <div mat-dialog-actions class="confirm-dialog__actions">
+        <button mat-button [mat-dialog-close]="false" cdkFocusInitial>Cancel</button>
+        <button mat-raised-button color="primary" (click)="onConfirm()">Confirm</button>
+    </div>
+</div>

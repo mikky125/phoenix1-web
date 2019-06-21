@@ -1,0 +1,7 @@
+<mat-toolbar color="primary">
+    <span>Phoenix 1</span>
+    <span class="header__spacer"></span>
+    <ng-template [ngIf]="authService.isLoggedIn">
+        <button mat-button (click)="logout()"><mat-icon>exit_to_app</mat-icon> Logout</button>
+    </ng-template>
+</mat-toolbar>

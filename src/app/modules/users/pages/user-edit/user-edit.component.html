@@ -1,0 +1,57 @@
+<app-page-heading
+    heading="User Edit - {{ user | fullname }}"
+    desc="You may update the user details here."
+    backButton="/users"
+>
+    <button mat-button color="warn" (click)="delete()" [disabled]="userLoading">
+        <mat-icon>delete</mat-icon> Delete
+    </button>
+</app-page-heading>
+<app-loading [loading]="userLoading"></app-loading>
+<form *ngIf="userForm" [formGroup]="userForm" (submit)="save()">
+    <mat-form-field>
+        <input matInput placeholder="First Name" formControlName="firstName" />
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Last Name" formControlName="lastName" />
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Profile URL" formControlName="profileImage" />
+    </mat-form-field>
+    <div formGroupName="address">
+        <div><b>Address</b></div>
+        <mat-form-field>
+            <input matInput placeholder="Street" formControlName="street" />
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="apartment" formControlName="apartment" />
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="city" formControlName="city" />
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="state" formControlName="state" />
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="zip" formControlName="zip" />
+        </mat-form-field>
+    </div>
+    <div formGroupName="orderTotal">
+        <div><b>Order</b></div>
+        <mat-form-field>
+            <input matInput placeholder="Amount" formControlName="amount" />
+        </mat-form-field>
+        <mat-form-field>
+            <!-- <mat-select formControlName="currency">
+                <mat-option *ngFor="let currency of currencies" [value]="currency">
+                    {{ currency }}
+                </mat-option>
+            </mat-select> -->
+            <input matInput formControlName="currency" />
+        </mat-form-field>
+    </div>
+    <div>
+        <a mat-button routerLink="/users">Cancel</a>
+        <button mat-raised-button color="primary">Save</button>
+    </div>
+</form>

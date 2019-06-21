@@ -1,0 +1,12 @@
+.confirm-dialog {
+    &__title {
+        margin-bottom: 5px;
+    }
+    &__desc {
+        margin: 0 0 20px;
+    }
+    &__actions {
+        text-align: right;
+        justify-content: flex-end;
+    }
+}

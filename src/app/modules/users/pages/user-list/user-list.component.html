@@ -1,0 +1,34 @@
+<app-page-heading heading="Users"></app-page-heading>
+<app-loading [loading]="loading"></app-loading>
+<ng-template [ngIf]="!loading">
+    <mat-form-field>
+        <input matInput (keyup)="search($event.target.value)" placeholder="Search" />
+    </mat-form-field>
+    <table mat-table [dataSource]="users" class="table">
+        <ng-container matColumnDef="profileImage">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let user"><img [src]="user.profileImage" class="table__profile-image" /></td>
+        </ng-container>
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>Name</th>
+            <td mat-cell *matCellDef="let user">
+                <a routerLink="{{ user.id }}">{{ user | fullname }}</a>
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="address">
+            <th mat-header-cell *matHeaderCellDef>Address</th>
+            <td mat-cell *matCellDef="let user">
+                {{ user.address | address }}
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="orderTotal">
+            <th mat-header-cell *matHeaderCellDef>Order Total</th>
+            <td mat-cell *matCellDef="let user">
+                {{ user.orderTotal.amount | currency: user.orderTotal.currency }}
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="usersGridColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: usersGridColumns"></tr>
+    </table>
+</ng-template>
